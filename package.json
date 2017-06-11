@@ -1,0 +1,27 @@
+{
+  "name": "pokemons-ajax",
+  "version": "1.0.0",
+  "description": "json, js, jquery, ajax",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmaliaRiveraC/pokemons-ajax-json.git"
+  },
+  "keywords": [
+    "json",
+    "ajax",
+    "jquery"
+  ],
+  "author": "Amalia Rivera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmaliaRiveraC/pokemons-ajax-json/issues"
+  },
+  "homepage": "https://github.com/AmaliaRiveraC/pokemons-ajax-json#readme",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
