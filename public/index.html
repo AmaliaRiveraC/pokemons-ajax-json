@@ -2,47 +2,61 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AJAX, JSON y APIs</title>
-    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <link href="css/main.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AJAX, JSON y APIs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+  <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+  <link href="css/main.css" rel="stylesheet">
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper pink darken-3">
-            <a href="#" class="brand-logo center">Mundo Pokemon</a>
-            <ul id="slide-out" class="side-nav">
-                <li>
-                    <a href="#!">
-                        <h4>Mundo Pokemon</h4>
-                    </a>
-                </li>
-                <li><a href="#">Pokemon</a></li>
-                <li><a href="#!">Acerca de</a></li>
-            </ul>
-            <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light left pink darken-4"><i class="material-icons">menu</i></a>
+  <nav>
+    <div class="nav-wrapper pink darken-3">
+      <a href="#" class="brand-logo center">Mundo Pokemon</a>
+      <ul id="slide-out" class="side-nav">
+        <li>
+          <a href="#!">
+            <h4>Mundo Pokemon</h4>
+          </a>
+        </li>
+        <li><a href="#">Pokemon</a></li>
+        <li><a href="#!">Acerca de</a></li>
+      </ul>
+      <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light left pink darken-4"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  <section>
+    <div id="pokemons" class="row"></div>
+  </section>
+
+
+
+  <!-- Modal Structure -->
+  
+    <div id="modal1" class="modal row">
+      <div class="modal-content">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">
+          <i class="material-icons">close</i>
+        </a>
+        <h4 id="nombre"></h4>
+        <img id="imagenModal" class="responsive-img" src="assets/img/__nombreImagen__.png">
+        <div class="col s4">
+          <p>Color: <span id="color"></span></p>
+          <p>Genera: <span id="genera"></span></p>
+          <p>Habitat: <span id="habitat"></span></p>
+          <p>Shape: <span id="shape"></span></p>
         </div>
-    </nav>
-    <section>
-      <div id="pokemons" class="row"></div>
-    </section>
-    
-    
-    <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-    <!-- Modal Structure -->
-    <section id="modal">
-       
-    </section>
-    
-    <!--Scripts -->
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <script src="./js/app.js"></script>
+      </div>
+    </div>
+  
+
+  <!--Scripts -->
+  <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 
 </html>

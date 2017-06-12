@@ -1,8 +1,8 @@
  var plantillaPokemons = '<div class="col s6 m2">' +
-   '<div class="card waves-effect" href="#modal1" data-url="http://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
+   '<div class="card waves-effect"  data-url="http://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
    '<div class= "card-content center-align circle">' +
    '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
-   '<h6 id="nombre" class="pokemon" ">__nombre__</h6>' +
+   '<h6 id="nombre" class="pokemon" "><a href="#modal1">__nombre__</a></h6>' +
    '</div>' +
    '</div>' +
    '</div>';
@@ -21,6 +21,7 @@
  };
 
  var cargarPagina = function () {
+   $('.modal').modal();
    $('.btn-floating').sideNav();
    $.getJSON("http://pokeapi.co/api/v2/pokemon/",
      function (response) {
@@ -31,7 +32,7 @@
 
 
 
- var plantillaModal =
+ /*var plantillaModal =
    '<div  id="modal1" class="modal row">' +
    '<div class="modal-content">' +
    '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">' +
@@ -51,28 +52,34 @@
    ' </div>' +
    '</div>' +
    '</div>' +
-   '</div>';
+   '</div>';*/
 
  var crearModalPokemon = function (nombrePoke, nombreImagen, color, genera, habitat, shape) {
-   var plantillaModalDefinitiva = " ";
+   
 
 
-   plantillaModalDefinitiva += plantillaModal
+  /* var plantillaModalDefinitiva = " "; 
+  plantillaModalDefinitiva += plantillaModal
      .replace("__nombre__", nombrePoke)
      .replace("__nombreImagen__", nombrePoke)
      .replace("__color__", color)
      .replace("__genera__", genera)
      .replace("__habitat__", habitat)
      .replace("__shape__", shape) 
-   
+   console.log(plantillaModalDefinitiva);
     $("#modal").html(plantillaModalDefinitiva);
-   $(".modal").css("display", "block");
+   $(".modal").css("display", "block");*/
+   
+   $("#nombre").text(nombrePoke);
+   $("#imagenModal").attr("src", "assets/img/" + nombreImagen + ".png");
+   $("#color").text(color);
+   $("#genera").text(genera);
+   $("#habitat").text(habitat);
+   $("#shape").text(shape);
+   
+   console.log(".modal");
  };
 
-var agregarModalhtml = function(plantillaModalDefinitiva) {
-  $(".modal").modal();
-  
-};
 
  var ajaxDatosEspecificos = function () {
    var url = $(this).data("url");
@@ -99,6 +106,5 @@ var agregarModalhtml = function(plantillaModalDefinitiva) {
 
 
 
- $(document).on("modal", ".modal", agregarModalhtml);
  $(document).on("click", ".card", ajaxDatosEspecificos);
  $(document).ready(cargarPagina);
