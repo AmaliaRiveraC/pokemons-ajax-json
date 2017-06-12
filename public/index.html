@@ -23,7 +23,7 @@
           </a>
         </li>
         <li><a href="#">Pokemon</a></li>
-        <li><a href="#!">Acerca de</a></li>
+        <li><a href="https://github.com/AmaliaRiveraC/pokemons-ajax-json">Acerca de</a></li>
       </ul>
       <a href="#" data-activates="slide-out" class="btn-floating btn-large waves-effect waves-light left pink darken-4"><i class="material-icons">menu</i></a>
     </div>
@@ -35,23 +35,27 @@
 
 
   <!-- Modal Structure -->
-  
-    <div id="modal1" class="modal row">
-      <div class="modal-content">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">
-          <i class="material-icons">close</i>
-        </a>
-        <h4 id="nombre"></h4>
-        <img id="imagenModal" class="responsive-img" src="assets/img/__nombreImagen__.png">
-        <div class="col s4">
-          <p>Color: <span id="color"></span></p>
-          <p>Genera: <span id="genera"></span></p>
-          <p>Habitat: <span id="habitat"></span></p>
-          <p>Shape: <span id="shape"></span></p>
-        </div>
+
+  <div id="modal1" class="modal row">
+    <div class="modal-content">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">
+        <i class="material-icons">close</i>
+      </a>
+      <div class="center-align">
+        <h3 class="center-align" id="nombrePoke"></h3>
+        <img id="imagenModal" class="responsive-img" style="width: 30%" src="assets/img/nombreImagen.png">
+      </div>
+      <div class="col offset-s3 s4">
+        <p>Color: <span id="color"></span></p>
+        <p>Genera: <span id="genera"></span></p>
+      </div>
+      <div class="col s4">
+        <p>Habitat: <span id="habitat"></span></p>
+        <p>Shape: <span id="shape"></span></p>
       </div>
     </div>
-  
+  </div>
+
 
   <!--Scripts -->
   <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>

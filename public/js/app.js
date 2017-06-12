@@ -2,7 +2,7 @@
    '<div class="card waves-effect"  data-url="http://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
    '<div class= "card-content center-align circle">' +
    '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
-   '<h6 id="nombre" class="pokemon" "><a href="#modal1">__nombre__</a></h6>' +
+   '<h6 id="nombre" class="pokemon" "><a style="color: white" href="#modal1">__nombre__</a></h6>' +
    '</div>' +
    '</div>' +
    '</div>';
@@ -57,27 +57,15 @@
  var crearModalPokemon = function (nombrePoke, nombreImagen, color, genera, habitat, shape) {
    
 
-
-  /* var plantillaModalDefinitiva = " "; 
-  plantillaModalDefinitiva += plantillaModal
-     .replace("__nombre__", nombrePoke)
-     .replace("__nombreImagen__", nombrePoke)
-     .replace("__color__", color)
-     .replace("__genera__", genera)
-     .replace("__habitat__", habitat)
-     .replace("__shape__", shape) 
-   console.log(plantillaModalDefinitiva);
-    $("#modal").html(plantillaModalDefinitiva);
-   $(".modal").css("display", "block");*/
-   
-   $("#nombre").text(nombrePoke);
+  console.log(nombrePoke);
+  
+   $("#nombrePoke").text(nombrePoke);
    $("#imagenModal").attr("src", "assets/img/" + nombreImagen + ".png");
    $("#color").text(color);
    $("#genera").text(genera);
    $("#habitat").text(habitat);
    $("#shape").text(shape);
-   
-   console.log(".modal");
+  
  };
 
 
