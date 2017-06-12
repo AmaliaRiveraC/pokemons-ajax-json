@@ -1,90 +1,104 @@
- var plantillaPokemons = '<div class="col s6 m3">' +
-     '<div class="card waves-effect" href="#modal1" data-url="http://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
-     '<div class= "card-content center-align">' +
-     '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
-     '<h6 class="pokemon" ">__nombre__</h6>' +
-     '</div>' +
-     '</div>' +
-     '</div>';
+ var plantillaPokemons = '<div class="col s6 m2">' +
+   '<div class="card waves-effect" href="#modal1" data-url="http://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
+   '<div class= "card-content center-align circle">' +
+   '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
+   '<h6 id="nombre" class="pokemon" ">__nombre__</h6>' +
+   '</div>' +
+   '</div>' +
+   '</div>';
 
- var cargarPagina = function () {
-     $(".btn-floating").sideNav();
-     $.getJSON("http://pokeapi.co/api/v2/pokemon/",
-         function (response) {
-             var pokemons = response.results;
-             crearPokemons(pokemons);
-         });
+ var crearPokemons = function (pokemons) {
+   var plantillaFinal = " ";
+   $(pokemons).each(function (i, pokemon) {
+     plantillaFinal += plantillaPokemons
+       .replace("__id__", i)
+       .replace("__nombre__", pokemon.name)
+       .replace("__nombreImagen__", pokemon.name)
+       .replace("__indice__", i + 1)
+   });
+   $("#pokemons").html(plantillaFinal);
+
  };
 
- 
-
-
- function crearPokemons(pokemons) {
-     var plantillaFinal = " ";
-     $(pokemons).each(function (i, pokemon) {
-         plantillaFinal += plantillaPokemons
-             .replace("__nombre__", pokemon.name)
-             .replace("__nombreImagen__", pokemon.name)
-             .replace("__indice__", i)
+ var cargarPagina = function () {
+   $('.btn-floating').sideNav();
+   $.getJSON("http://pokeapi.co/api/v2/pokemon/",
+     function (response) {
+       var pokemons = response.results;
+       crearPokemons(pokemons);
      });
-     $("#pokemons").html(plantillaFinal);
-
- }
-
-function ajaxDatosEspecificos () {
-          $('.modal').modal();
-     var url = $(this).data("url");
-     $.getJSON(url,
-         function (response) {
-             var pokemons = response.results;
-             crearModalPokemons(pokemons);
-         });
-
  };
 
 
 
  var plantillaModal =
-     '<div  id="modal1" class="modal row">' +
-     '<div class="modal-content">' +
-     '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">' +
-     '<i class="material-icons">' +
-     'close' +
-     '</i>' +
-     '</a>' +
-     '<h4>__nombre__</h4>' +
-     '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
-     '<div class="col s4">' +
-     '<p>Color: __color__</p>' +
-     '<p>Shape: __shape__</p>' +
-     ' </div>' +
-     '<div class="col s4">' +
-     '<p>Habitat: __habitat__</p>' +
-     '<p>Genera: __genera__</p>' +
-     ' </div>' +
-     '</div>' +
-     '</div>' +
-     '</div>';
+   '<div  id="modal1" class="modal row">' +
+   '<div class="modal-content">' +
+   '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">' +
+   '<i class="material-icons">' +
+   'close' +
+   '</i>' +
+   '</a>' +
+   '<h4>__nombre__</h4>' +
+   '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
+   '<div class="col s4">' +
+   '<p>Color: __color__</p>' +
+   '<p>Genera: __genera__</p>' +
+   '<p>Habitat: __habitat__</p>' +
+   '<p>Shape: __shape__</p>' +
+   ' </div>' +
+   '<div class="col s4">' +
+   ' </div>' +
+   '</div>' +
+   '</div>' +
+   '</div>';
+
+ var crearModalPokemon = function (nombrePoke, nombreImagen, color, genera, habitat, shape) {
+   var plantillaModalDefinitiva = " ";
 
 
- function crearModalPokemons(pokemons) {
-     var plantillaModalDefinitiva = " ";
+   plantillaModalDefinitiva += plantillaModal
+     .replace("__nombre__", nombrePoke)
+     .replace("__nombreImagen__", nombrePoke)
+     .replace("__color__", color)
+     .replace("__genera__", genera)
+     .replace("__habitat__", habitat)
+     .replace("__shape__", shape) 
+   
+    $("#modal").html(plantillaModalDefinitiva);
+   $(".modal").css("display", "block");
+ };
 
-     $(pokemons).each(function (i, pokemon) {
-         plantillaModalDefinitiva += plantillaModal
-             .replace("__nombre__", pokemon.name)
-             .replace("__nombreImagen__", pokemon.name)
-             .replace("__color__", pokemon.color.name)
-             .replace("__shape__", pokemon.shape.name)
-            .replace("__genera__", pokemon.genera[2].genus)
+var agregarModalhtml = function(plantillaModalDefinitiva) {
+  $(".modal").modal();
+  
+};
+
+ var ajaxDatosEspecificos = function () {
+   var url = $(this).data("url");
+   var nombrePoke = $(this)[0].textContent;
+   $.getJSON(url,
+     function (response) {
+       // response trae los datos específicos que necesitamos
+       var color = response.color.name;
+       var genera = response.genera[0].genus;
+       var habitat = response.habitat.name;
+       var shape = response.shape.name;
+
+       crearModalPokemon(nombrePoke, nombrePoke, color, genera, habitat, shape);
+
+
      });
- 
-     $("#modal").html(plantillaModalDefinitiva);
-    
-     console.log(plantillaModalDefinitiva);
+
  };
 
 
 
+
+
+
+
+
+ $(document).on("modal", ".modal", agregarModalhtml);
  $(document).on("click", ".card", ajaxDatosEspecificos);
  $(document).ready(cargarPagina);
