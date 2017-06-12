@@ -67,14 +67,13 @@
      });
  };
 
- var siguientesPokemones = function (url) {
-   var url = $("#next").data("url");
-   $("#next").removeAttr("data-url");
+ var siguientesPokemones = function () {
+   var $botonSiguiente = $("#next");
+   var url = $botonSiguiente.attr("data-url");
    $.getJSON(url, function (response) {
      var pokemons = response.results;
-     var next = response.next;
-     $("#next").attr("data-url", next);
-     $("#next").click(siguientesPokemones);
+     var siguienteNext = response.next;
+     $botonSiguiente.attr("data-url", siguienteNext);
      crearPokemons(pokemons);
    });
  }
