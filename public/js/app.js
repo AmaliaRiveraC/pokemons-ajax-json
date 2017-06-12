@@ -31,47 +31,19 @@
  };
 
 
-
- /*var plantillaModal =
-   '<div  id="modal1" class="modal row">' +
-   '<div class="modal-content">' +
-   '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat right">' +
-   '<i class="material-icons">' +
-   'close' +
-   '</i>' +
-   '</a>' +
-   '<h4>__nombre__</h4>' +
-   '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
-   '<div class="col s4">' +
-   '<p>Color: __color__</p>' +
-   '<p>Genera: __genera__</p>' +
-   '<p>Habitat: __habitat__</p>' +
-   '<p>Shape: __shape__</p>' +
-   ' </div>' +
-   '<div class="col s4">' +
-   ' </div>' +
-   '</div>' +
-   '</div>' +
-   '</div>';*/
-
- var crearModalPokemon = function (nombrePoke, nombreImagen, color, genera, habitat, shape) {
-   
-
-  console.log(nombrePoke);
-  
-   $("#nombrePoke").text(nombrePoke);
-   $("#imagenModal").attr("src", "assets/img/" + nombreImagen + ".png");
-   $("#color").text(color);
-   $("#genera").text(genera);
-   $("#habitat").text(habitat);
-   $("#shape").text(shape);
-  
+ var crearModalPokemon = function (detalle) {
+   $("#nombrePoke").text(detalle.nombrePoke);
+   $("#imagenModal").attr("src", "assets/img/" + detalle.nombreImagen + ".png");
+   $("#color").text(detalle.color);
+   $("#genera").text(detalle.genera);
+   $("#habitat").text(detalle.habitat);
+   $("#shape").text(detalle.shape);
  };
 
 
  var ajaxDatosEspecificos = function () {
    var url = $(this).data("url");
-   var nombrePoke = $(this)[0].textContent;
+   var $nombrePoke = $(this)[0].textContent;
    $.getJSON(url,
      function (response) {
        // response trae los datos específicos que necesitamos
@@ -80,11 +52,15 @@
        var habitat = response.habitat.name;
        var shape = response.shape.name;
 
-       crearModalPokemon(nombrePoke, nombrePoke, color, genera, habitat, shape);
-
-
-     });
-
+       crearModalPokemon({
+         nombrePoke: $nombrePoke,
+         nombreImagen: $nombrePoke,
+         color: color,
+         genera: genera,
+         habitat: habitat,
+         shape: shape
+       });
+   });
  };
 
 
