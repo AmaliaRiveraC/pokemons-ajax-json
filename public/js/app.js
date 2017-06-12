@@ -23,9 +23,13 @@
  var cargarPagina = function () {
    $('.modal').modal();
    $('.btn-floating').sideNav();
+   $("#next").click(siguientesPokemones);
+
    $.getJSON("https://pokeapi.co/api/v2/pokemon/",
      function (response) {
        var pokemons = response.results;
+       var next = response.next;
+       $("#next").attr("data-url", next);
        crearPokemons(pokemons);
      });
  };
@@ -60,8 +64,20 @@
          habitat: habitat,
          shape: shape
        });
-   });
+     });
  };
+
+ var siguientesPokemones = function (url) {
+   var url = $("#next").data("url");
+   $("#next").removeAttr("data-url");
+   $.getJSON(url, function (response) {
+     var pokemons = response.results;
+     var next = response.next;
+     $("#next").attr("data-url", next);
+     $("#next").click(siguientesPokemones);
+     crearPokemons(pokemons);
+   });
+ }
 
 
 
