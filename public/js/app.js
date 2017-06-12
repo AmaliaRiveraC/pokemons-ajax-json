@@ -1,5 +1,5 @@
  var plantillaPokemons = '<div class="col s6 m2">' +
-   '<div class="card waves-effect"  data-url="http://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
+   '<div class="card waves-effect"  data-url="https://pokeapi.co/api/v2/pokemon-species/__indice__/">' +
    '<div class= "card-content center-align circle">' +
    '<img class="responsive-img center" src="assets/img/__nombreImagen__.png">' +
    '<h6 id="nombre" class="pokemon" "><a style="color: white" href="#modal1">__nombre__</a></h6>' +
@@ -23,7 +23,7 @@
  var cargarPagina = function () {
    $('.modal').modal();
    $('.btn-floating').sideNav();
-   $.getJSON("http://pokeapi.co/api/v2/pokemon/",
+   $.getJSON("https://pokeapi.co/api/v2/pokemon/",
      function (response) {
        var pokemons = response.results;
        crearPokemons(pokemons);
