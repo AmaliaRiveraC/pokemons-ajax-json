@@ -14,7 +14,7 @@
 
 <body>
   <nav>
-    <div class="nav-wrapper pink darken-3">
+    <div class="nav-wrapper pink">
       <a href="#" class="brand-logo center">Mundo Pokemon</a>
       <ul id="slide-out" class="side-nav">
         <li>
@@ -30,7 +30,9 @@
   </nav>
   <section>
     <div id="pokemons" class="row"></div>
-    <a id="next" class="waves-effect waves-light btn right pink darken-1"><i class="material-icons">arrow_forward</i>Siguientes</a>
+    
+    <a id="previous" class="waves-effect waves-light btn left pink darken-1"><i class="material-icons">arrow_back</i>Anteriores</a>
+    <a id="next" class="waves-effect waves-light btn right pink darken-1">Siguientes<i class="material-icons">arrow_forward</i></a>
   </section>
 
   
@@ -47,12 +49,12 @@
         <img id="imagenModal" class="responsive-img" style="width: 30%">
       </div>
       <div class="col offset-s3 s4">
-        <p>Color: <span id="color"></span></p>
-        <p>Genera: <span id="genera"></span></p>
+        <p class="datos">Color: <span id="color"></span></p>
+        <p class="datos">Genera: <span id="genera"></span></p>
       </div>
       <div class="col s4">
-        <p>Habitat: <span id="habitat"></span></p>
-        <p>Shape: <span id="shape"></span></p>
+        <p class="datos">Habitat: <span id="habitat"></span></p>
+        <p class="datos">Shape: <span id="shape"></span></p>
       </div>
     </div>
   </div>

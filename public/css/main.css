@@ -1,13 +1,19 @@
-.card .card-content img{
-	width: 6rem;
+.card .card-content img {
+  width: 6rem;
 }
 
+.card .card-content h6 {
+  color: #FFF;
+  background-color: #e91e63;
+  padding: 1%;
+  width: 100%;
+  border-radius: 10%;
+}
 
-
-.card .card-content h6{
-	background-color: #880e4f;
-	padding: 1%;
-	width: 100%;
-	color: #FFF;
-    border-radius: 30%;
+.datos {
+  color: #FFF;
+  background-color: #e91e63;
+  padding-left: 1%;
+  width: 100%;
+  border-radius: 10%;
 }
