@@ -23,8 +23,8 @@
  var cargarPagina = function () {
    $('.modal').modal();
    $('.btn-floating').sideNav();
-   $("#next").click(siguientesPokemones);
-
+   $("#next").click(siguientesPokemons);
+   $("#previous").click(anterioresPokemons);
    $.getJSON("https://pokeapi.co/api/v2/pokemon/",
      function (response) {
        var pokemons = response.results;
@@ -67,17 +67,32 @@
      });
  };
 
- var siguientesPokemones = function () {
-   var $botonSiguiente = $("#next");
-   var url = $botonSiguiente.attr("data-url");
+
+
+ var siguientesPokemons = function () {
+   var url = $("#next").attr("data-url");
    $.getJSON(url, function (response) {
      var pokemons = response.results;
-     var siguienteNext = response.next;
-     $botonSiguiente.attr("data-url", siguienteNext);
+     var siguientes = response.next;
+     var anteriores = response.previous;
+     $("#previous").attr("data-url", anteriores);
+     $("#next").attr("data-url", siguientes);
      crearPokemons(pokemons);
    });
  }
 
+ 
+var anterioresPokemons = function() {
+  var url = $("#previous").attr("data-url");
+  $.getJSON(url, function(response) {
+    var pokemons = response.results;
+    var siguientes = response.next;
+     var anteriores = response.previous;
+     $("#previous").attr("data-url", anteriores);
+     $("#next").attr("data-url", siguientes);
+     crearPokemons(pokemons);
+  });
+};
 
 
 
